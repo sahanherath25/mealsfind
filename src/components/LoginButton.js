@@ -2,11 +2,8 @@ import React from "react";
 import {Text, View} from "react-native";
 
 
-const LoginButton=(title)=>{
-
-
+const LoginButton=({title, color})=>{
     return(
-
         <View>
             <Text>
                 {title}
@@ -14,3 +11,5 @@ const LoginButton=(title)=>{
         </View>
     )
 }
+
+export default LoginButton;

@@ -1,26 +1,61 @@
-import {StatusBar} from 'expo-status-bar';
-import {Button, StyleSheet, Text, View} from 'react-native';
+import {StatusBar, StyleSheet, Text, View} from 'react-native';
+import {StatusBar as ExpoStatusBar} from "expo-status-bar";
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import LoginButton from "./src/components/LoginButton";
 
+
+
+console.log(StatusBar.currentHeight)
 export default function App() {
     return (
-        <View style={styles.container}>
-            <View>
-                <Text>This is the 1st Screen</Text>
-            </View>
-            <View>
-                <Button title={"Login"}  color={"red"} disabled={false}/>
-            </View>
 
-        </View>
+        <>
+            <SafeAreaProvider style={styles.mainContainer}>
+                <View style={styles.searchBox}>
+                    <Text>Search</Text>
+                </View>
+                <View style={styles.list}>
+                    <Text>List</Text>
+                </View>
+
+                <LoginButton title={"Submit"}/>
+            </SafeAreaProvider>
+
+            <ExpoStatusBar/>
+        </>
+
     );
 }
 
 const styles = StyleSheet.create({
-    container: {
+
+    mainContainer: {
         flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'space-evenly',
-        flexDirection:"row"
+        marginTop:StatusBar.currentHeight,
     },
+    container: {
+        borderColor: "red",
+        borderWidth: 2,
+        borderStyle: "solid",
+    },
+    searchBox: {
+        backgroundColor: "green",
+        padding: 16,
+        // flexGrow:1,
+        width: "100%",
+    },
+
+    list: {
+        flex: 1,
+        backgroundColor: "blue",
+        // flexGrow: 9,
+        width: "100%",
+        padding: 16,
+    },
+    textStyle: {
+        fontSize: 10,
+
+    },
+
+
 });
