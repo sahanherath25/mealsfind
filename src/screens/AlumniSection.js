@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, FlatList, Image, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import {Picker} from "@react-native-picker/picker";
+import {Searchbar} from "react-native-paper";
 
 const alumniData = [
     {
@@ -9,23 +10,47 @@ const alumniData = [
         campus: 'Horizon Campus',
         email: 'john.doe@example.com',
         faculty: 'IT',
-        image: require('../../assets/splash.png'), // Replace with image URL from Firebase
+        image: require('../../assets/images/users/alex.jpg'), // Replace with image URL from Firebase
     },
     {
         id: '2',
         name: 'Jane Smith',
         campus: 'Horizon Campus',
         email: 'jane.smith@example.com',
-        faculty: 'Education',
-        image: require('../../assets/splash.png'), // Replace with image URL from Firebase
+        faculty: 'Science',
+        image: require('../../assets/images/users/alex.jpg'), // Replace with image URL from Firebase
     },
     {
         id: '3',
+        name: 'Rickey',
+        campus: 'Horizon Campus',
+        email: 'jane.smith@example.com',
+        faculty: 'IT',
+        image: require('../../assets/images/users/alex.jpg'), // Replace with image URL from Firebase
+    },
+    {
+        id: '4',
         name: 'Jane Smith',
         campus: 'Horizon Campus',
         email: 'jane.smith@example.com',
-        faculty: 'Education',
-        image: require('../../assets/splash.png'), // Replace with image URL from Firebase
+        faculty: 'Science',
+        image: require('../../assets/images/users/alex.jpg'), // Replace with image URL from Firebase
+    },
+    {
+        id: '5',
+        name: 'John',
+        campus: 'Horizon Campus',
+        email: 'jane.smith@example.com',
+        faculty: 'IT',
+        image: require('../../assets/images/users/alex.jpg'), // Replace with image URL from Firebase
+    },
+    {
+        id: '6',
+        name: 'Shane',
+        campus: 'Horizon Campus',
+        email: 'jane.smith@example.com',
+        faculty: 'IT',
+        image: require('../../assets/images/users/alex.jpg'), // Replace with image URL from Firebase
     },
     // Add more dummy data as needed
 ];
@@ -59,15 +84,16 @@ const AlumniComponent = () => {
 
     return (
         <View style={styles.container}>
+            <Searchbar
+                placeholder="Search Name"
+                onChangeText={setSearchText}
+                value={searchText}
+            />
+
             <View style={styles.searchContainer}>
-                <TextInput
-                    style={styles.searchInput}
-                    placeholder="Search alumni by name..."
-                    value={searchText}
-                    onChangeText={setSearchText}
-                />
+
                 <View style={styles.facultyDropdown}>
-                    <Text style={styles.facultyText}>Filter by Faculty:</Text>
+                    <Text style={styles.facultyText}>Faculty :</Text>
                     <Picker
                         selectedValue={selectedFaculty}
                         style={styles.facultyPicker}
@@ -78,9 +104,12 @@ const AlumniComponent = () => {
                         <Picker.Item label="Education" value="Education" />
                         <Picker.Item label="Management" value="Management" />
                         <Picker.Item label="Science" value="Science" />
+
                     </Picker>
                 </View>
             </View>
+
+            <Text>Selected Faculty : {selectedFaculty}</Text>
             <FlatList
                 data={filteredData}
                 renderItem={renderItem}
@@ -100,6 +129,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         marginBottom: 20,
+        marginTop:15,
     },
     searchInput: {
         flex: 1,
@@ -112,6 +142,7 @@ const styles = StyleSheet.create({
         width: '80%',
     },
     facultyDropdown: {
+        flex:1,
         flexDirection: 'row',
         alignItems: 'center',
         borderWidth: 1,
@@ -124,7 +155,7 @@ const styles = StyleSheet.create({
         marginRight: 5,
     },
     facultyPicker: {
-        width: 150,
+        width: 290,
         height: 40,
     },
     listContainer: {
@@ -154,10 +185,11 @@ const styles = StyleSheet.create({
     },
     alumniEmail: {
         fontSize: 14,
-        color: '#337ab7',
+        color: '#071952',
+        fontWeight:"bold"
     },
     messageButton: {
-        backgroundColor: '#337ab7',
+        backgroundColor: '#071952',
         borderRadius: 5,
         paddingVertical: 8,
         paddingHorizontal: 16,

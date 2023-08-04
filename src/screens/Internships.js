@@ -1,13 +1,15 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 
-const InternshipCard = ({ internship }) => {
+const InternshipCard = () => {
+
+
     return (
         <View style={styles.container}>
             <View style={styles.detailsContainer}>
-                <Text style={styles.title}>{internship.company}</Text>
-                <Text style={styles.text}>Skills Needed: {internship.skills}</Text>
-                <Text style={styles.text}>Location: {internship.location}</Text>
+                <Text style={styles.title}>MIT</Text>
+                <Text style={styles.text}>Skills Needed: Python</Text>
+                <Text style={styles.text}>Location: USA</Text>
             </View>
         </View>
     );
